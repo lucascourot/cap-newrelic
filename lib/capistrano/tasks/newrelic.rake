@@ -6,7 +6,8 @@ namespace :newrelic do
         current_rev = fetch(:current_revision)
         previous_rev = fetch(:previous_revision)
         local_user = capture('git config user.name').strip
-        changelog = capture("git log --oneline #{previous_rev}..#{current_rev}")
+        changelog = "#{previous_rev}..#{current_rev}"
+        # changelog = capture("git log --oneline #{previous_rev}..#{current_rev}")
         deployment = {
           :deployment => {
             :app_name => fetch(:new_relic_app_name) || fetch(:application),
